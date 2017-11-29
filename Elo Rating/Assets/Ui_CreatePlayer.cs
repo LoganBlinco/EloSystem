@@ -24,6 +24,8 @@ public class Ui_CreatePlayer : MonoBehaviour {
             Debug.Log(Player.PlayersList[0].firstName);
             OnReturnClicked();
 
+            Player.SaveData(create, "data.xml");
+
             ResetValues();
         }
         else

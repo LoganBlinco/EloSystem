@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System;
+using System.Xml.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
+[Serializable]
 public class Player {
-
+    
     public static List<Player> PlayersList = new List<Player>();
+    public List<Player> personal;
     public static int startingElo = 1000;
     public static int nextID = 0;
     //public static Dictionary<string, Player> Players = new Dictionary<string, Player>();
@@ -95,5 +99,24 @@ public class Player {
             winRate = 100 * wins / total;
         }
     }
+
+    public static void SaveData(object obj,string filename)
+    {
+        XmlSerializer sr = new XmlSerializer(obj.GetType());
+        TextWriter writer = new StreamWriter(filename);
+        sr.Serialize(writer, obj);
+        writer.Close();
+    }
+
+    public static void LoadData(string filename)
+    {
+        if (File.Exists("data.xml"))
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Player));
+            FileStream read = new FileStream("data.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
+            Particle info = (Particle)xs.Deserialize(read);
+        }
+    }
+
 
 }

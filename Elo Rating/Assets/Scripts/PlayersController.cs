@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 public class PlayersController : MonoBehaviour {
 
@@ -58,7 +58,7 @@ public class PlayersController : MonoBehaviour {
             string title = "Invalid input";
             string message = "You must enter a forename and a surname";
             string okButton = "Ok";
-            EditorUtility.DisplayDialog(title, message, okButton);
+            //EditorUtility.DisplayDialog(title, message, okButton);
         }
     }
 

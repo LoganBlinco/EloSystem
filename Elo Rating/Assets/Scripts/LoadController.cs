@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 
 public class LoadController : MonoBehaviour {
@@ -57,7 +57,7 @@ public class LoadController : MonoBehaviour {
         {
             string title = "Invalid Input";
             string message = "How are they playing themselfs?";
-            EditorUtility.DisplayDialog(title,message,"Ok");
+            //EditorUtility.DisplayDialog(title,message,"Ok");
         }
     }
 

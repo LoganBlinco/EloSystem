@@ -86,7 +86,6 @@ public class PlayersController : MonoBehaviour {
             tempObject.transform.parent = GameObject.Find("Scores").transform;
             tempObject.transform.localScale = Vector3.one;
         }
-        Debug.Log("Scoreboard showed");
     
     }
     #endregion

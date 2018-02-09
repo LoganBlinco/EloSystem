@@ -52,6 +52,8 @@ public class LoadController : MonoBehaviour {
         if (winnerID != loserID)
         {
             EloCalculator.CalculateElo(winnerID, loserID);
+            DatabaseController.addMatchPlayed(winnerID);
+            DatabaseController.addMatchPlayed(loserID);
         }
         else
         {

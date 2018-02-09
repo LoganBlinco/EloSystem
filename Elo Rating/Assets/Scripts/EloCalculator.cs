@@ -9,12 +9,10 @@ public class EloCalculator {
 
     private static float mod = 400;
     //Higher K means less volatile
-    private static float K = 32;
+    private static float K = 48;
     private static float pointsPerWin = 1.0f;
     private static float pointsPerDraw = 0.0f;
     private static float pointsPerLoss = 0.0f;
-
-
 
     public static void CalculateElo(int winnerID, int loserID)
     {

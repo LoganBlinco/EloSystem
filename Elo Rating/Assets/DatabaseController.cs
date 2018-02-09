@@ -41,14 +41,40 @@ ELO int NOT NULL)";
         Debug.Log("Connection created");
     }
 
+    public static void addMatchPlayed(int id)
+    {
+        databaseConnection.Open();
 
+        //get number of games played
+        string sqlCommand = String.Format("SELECT gamesPlayed FROM Players WHERE ID = {0}",id);
+        IDbCommand command = databaseConnection.CreateCommand();
+        command.CommandText = sqlCommand;
+        IDataReader reader = command.ExecuteReader();
+
+        int gamesPlayed =0;
+        while (reader.Read())
+        {
+            gamesPlayed = (int)reader["gamesPlayed"];
+        }
+
+        //add to the games played
+        gamesPlayed += 1;
+        sqlCommand = string.Format("UPDATE Players SET gamesPlayed = {0} WHERE ID = {1}", gamesPlayed, id);
+        command = databaseConnection.CreateCommand();
+        command.CommandText = sqlCommand;
+        reader = command.ExecuteReader();
+
+        databaseConnection.Close();
+
+
+    }
 
 
     public static void AddPlayer(string FirstName, string LastName,int elo)
     {
         databaseConnection.Open();
 
-        string sqlCommand = String.Format("INSERT INTO Players(FirstName,LastName,ELO) values('{0}','{1}','{2}')", FirstName, LastName, elo);
+        string sqlCommand = String.Format("INSERT INTO Players(FirstName,LastName,ELO,gamesPlayed) values('{0}','{1}','{2}', '0')", FirstName, LastName, elo);
         IDbCommand command = databaseConnection.CreateCommand();
         command.CommandText = sqlCommand;
         IDataReader reader = command.ExecuteReader();
@@ -135,8 +161,6 @@ ELO int NOT NULL)";
         IDbCommand command = databaseConnection.CreateCommand();
         command.CommandText = sqlCommand;
         IDataReader reader = command.ExecuteReader();
-        databaseConnection.Close();
-
     }
 
 
